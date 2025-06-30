@@ -10,5 +10,7 @@ players.PlayerAdded:Connect(
 		score.Name = "Score"
 		score.Value = 0
 		score.Parent = leaderboard
+
+		player.TeamColor = BrickColor.new("White") -- folositi culoarea de la echipa Lobby
 	end
 )
