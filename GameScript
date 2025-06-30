@@ -1,0 +1,42 @@
+local displayText = game.ReplicatedStorage:WaitForChild("DisplayText")
+local roundStart  = game.ReplicatedStorage:WaitForChild("RoundStart")
+local roundEnd    = game.ReplicatedStorage:WaitForChild("RoundEnd")
+
+local ROUND_TIME = 30
+local LOBBY_TIME = 15
+
+
+
+
+function teleport(color)
+	local players = game.Players:GetPlayers()
+	
+	for _,plr in players do
+		plr.TeamColor = BrickColor.new(color)
+	end
+end
+
+roundStart.Event:Connect(
+	teleport("Gold") -- culoarea de la echipa Game
+)
+
+roundEnd.Event:Connect(
+	teleport("White") -- culoarea de la echipa Lobby
+)
+
+
+
+wait(1)
+
+while true do
+	displayText:FireAllClients("Jocul incepe in "..LOBBY_TIME.." secunde.")
+	
+	wait(LOBBY_TIME)
+	
+	displayText:FireAllClients("Colecteaza banuti.\n Ai "..ROUND_TIME.." de secunde.")
+	roundStart:Fire()
+	
+	wait(ROUND_TIME)
+	
+	roundEnd:Fire()
+end
