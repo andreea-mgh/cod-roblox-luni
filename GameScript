@@ -17,11 +17,15 @@ function teleport(color)
 end
 
 roundStart.Event:Connect(
-	teleport("Gold") -- culoarea de la echipa Game
+	function()
+		teleport("Gold") -- culoarea de la echipa Game
+	end
 )
 
 roundEnd.Event:Connect(
-	teleport("White") -- culoarea de la echipa Lobby
+	function()
+		teleport("White") -- culoarea de la echipa Lobby
+	end
 )
 
 
