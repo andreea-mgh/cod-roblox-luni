@@ -13,6 +13,7 @@ function teleport(color)
 	
 	for _,plr in players do
 		plr.TeamColor = BrickColor.new(color)
+		plr:LoadCharacter()
 	end
 end
 
