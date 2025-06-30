@@ -1,0 +1,8 @@
+local event = game.ReplicatedStorage:WaitForChild("DisplayText")
+
+
+event.OnClientEvent:Connect(
+	function(message)
+		script.Parent.Text = message
+	end
+)
