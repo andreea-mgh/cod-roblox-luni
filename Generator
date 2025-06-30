@@ -1,0 +1,23 @@
+local generator = {}
+
+function generator.GenerateParts(nr, part)
+	for i=1,nr,1 do
+		local c = part:Clone()
+		local x = math.random(-200, 200)
+		local y = 60
+		local z = math.random(-200, 200)
+		c.Position = Vector3.new(x,y,z)
+		c.Parent = workspace
+	end
+end
+
+function generator.DeleteParts(name)
+	for _,obj in ipairs(workspace:GetDescendants()) do
+		if obj.Name == name then
+			obj:Destroy()
+		end
+	end
+end
+
+
+return generator
