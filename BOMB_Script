@@ -1,0 +1,7 @@
+script.Parent.Touched:Connect(
+	function()
+		local ex = Instance.new("Explosion")
+		ex.Position = script.Parent.Position
+		script.Parent:Destroy()
+	end
+)
