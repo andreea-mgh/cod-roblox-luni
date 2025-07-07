@@ -1,0 +1,10 @@
+script.Parent.Touched:Connect(
+	function(otherPart)
+		local player = game.Players:GetPlayerFromCharacter(otherPart.Parent)
+		
+		if player then
+			player.leaderstats.Score.Value = player.leaderstats.Score.Value + 1
+			script.Parent:Destroy()
+		end
+	end
+)
