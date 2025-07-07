@@ -6,10 +6,25 @@ function generator.GeneratePartsRandom(part, nr)
 		for i=1, nr, 1 do
 			local c = part:Clone()
 			local x = math.random(-200, 200)
-			local y = 1
+			local y = 5
 			local z = math.random(-200, 200)
 			c.Position = Vector3.new(x, y, z)
 			c.Parent = workspace
+		end
+	end
+end
+
+
+function generator.GeneratePartsTimed(part, nr, sec)
+	if tonumber(nr) and part:IsA("Part") then
+		for i=1, nr, 1 do
+			local c = part:Clone()
+			local x = math.random(-200, 200)
+			local y = 60
+			local z = math.random(-200, 200)
+			c.Position = Vector3.new(x, y, z)
+			c.Parent = workspace
+			wait(sec/nr)
 		end
 	end
 end
