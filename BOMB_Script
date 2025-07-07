@@ -2,6 +2,7 @@ script.Parent.Touched:Connect(
 	function()
 		local ex = Instance.new("Explosion")
 		ex.Position = script.Parent.Position
+		ex.Parent = workspace
 		script.Parent:Destroy()
 	end
 )
