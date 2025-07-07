@@ -2,6 +2,13 @@ local displayText = game.ReplicatedStorage:WaitForChild("DisplayText")
 local roundStart  = game.ReplicatedStorage:WaitForChild("RoundStart")
 local roundEnd    = game.ReplicatedStorage:WaitForChild("RoundEnd")
 
+local generator = require(game.ServerStorage:WaitForChild("PartGeneratorMS"))
+
+local coin = game.ServerStorage:WaitForChild("COIN")
+local bomb = game.ServerStorage:WaitForChild("BOMB")
+
+
+
 local ROUND_TIME = 30
 local LOBBY_TIME = 15
 
@@ -15,17 +22,21 @@ function teleport(color)
 		plr.TeamColor = BrickColor.new(color)
 		plr:LoadCharacter()
 	end
+	
 end
 
 roundStart.Event:Connect(
 	function()
 		teleport("Gold") -- culoarea de la echipa Game
+		generator.GeneratePartsRandom(coin, 200)
+		generator.GeneratePartsTimed(bomb, 300, ROUND_TIME)
 	end
 )
 
 roundEnd.Event:Connect(
 	function()
 		teleport("White") -- culoarea de la echipa Lobby
+		generator.DeleteParts("COIN")
 	end
 )
 
